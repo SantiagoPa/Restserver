@@ -37,7 +37,8 @@ const {Schema,model} = require('mongoose');
  // sacando el password y __v del post que devuelve.
  // es irrelevante al usurario mostrar eso
  userSchema.methods.toJSON = function(){
-     const { __v, password, ...user} = this.toObject();
+     const { __v, password, _id, ...user} = this.toObject();
+     user.uid = _id;
      return user;
  } 
 
